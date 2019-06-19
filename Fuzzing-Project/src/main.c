@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <arpa/inet.h>
-#include <string.h>
 #include <stdint.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <stdbool.h>
 #include <sys/socket.h> 
@@ -63,7 +63,6 @@ int createSocket(int port, bool udp, bool ipv4) {
 	struct sockaddr_in address;  
     struct sockaddr_in serv_addr; 
     char *hello = "Hello from client"; 
-    char buffer[1024] = {0};
 
 	if(sockfd == 0) {
 		printf("\nsockfd error\n");
@@ -75,7 +74,7 @@ int createSocket(int port, bool udp, bool ipv4) {
 	serv_addr.sin_family = AF_INET; 
     serv_addr.sin_port = htons(&port);  
     // Convert IPv4 and IPv6 addresses from text to binary form 
-    if(inet_pton(AF_INET, "192.168.42.1", &serv_addr.sin_addr)<=0)  
+    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)  
     { 
         printf("\nInvalid address/ Address not supported \n"); 
         return -1; 
