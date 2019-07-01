@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
     //first and only tcp seg
     tcph->tcph_offset = 0;
     
-    tcph->tcph_syn = 0x02;
+    tcph->tcph_syn = 0x02; //maybe set to 1 shhhhh
 
     tcph->tcph_win = htonl(6553); //max allowed
 
