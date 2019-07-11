@@ -16,12 +16,18 @@ int main(int argc, char * argv[]) {
     struct  sockaddr_in sin, din;
     int one = 1;
     const int *val = &one;
-
+    
     memset(buffer, 0, PCKT_LEN);
+    for(int i=0; i<strlen(argv[5]); i++) {
+        buffer[i] = argv[5][i];
+    }
+    printf("The buffer is %s\n", buffer);
 
-    if(argc != 5) {
+
+
+    if(argc < 5) {
         printf("- Invalid parameters!\n");
-        printf("- Usage %s <source hostname/IP> <source port> <target hostname/IP> <target port>\n", argv[0]);
+        printf("- Usage %s <source hostname/IP> <source port> <target hostname/IP> <target port> <data>\n", argv[0]);
         exit(-1);
     }
     
